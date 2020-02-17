@@ -2,8 +2,6 @@ import re
 import sys
 from argparse import Namespace, ArgumentParser
 
-FILE_CONF_LIST = ['agSeqPorts.pv', 'ag_sf.lut']
-
 
 class ConfigurationError(Exception):
     """
@@ -12,21 +10,21 @@ class ConfigurationError(Exception):
     pass
 
 
-def read_configuration_file_list(conf_list):
+def instrument_to_search(ports_list):
     """
-    This function iterates over a list who has the configuration files for later appended
-    into only one file list.
-    :param conf_list: The configurations files list.
-    :type conf_list: list
-    :return: A list with files found inside the configurations files.
-    :rtype:list
+
+    :param ports_list:
+    :type ports_list: list
+    :return:
+    :rtype: list
     """
-    final_list = []
-    for config in conf_list:
-        final_list.append(config)
-        for config_files_list in read_configuration(config):
-            final_list.append(config_files_list)
-    return final_list
+    instrument_to_search_list = []
+    for port_line in ports_list:
+        port_line_list = port_line.split()
+        number_port = (port_line_list[1])[-1]
+        instrument_name = port_line_list[3].replace('"', '').lower()
+        instrument_to_search_list.append(instrument_name + number_port)
+    return instrument_to_search_list
 
 
 def read_configuration(file_name):
@@ -55,46 +53,25 @@ def read_configuration(file_name):
             continue
         line_split_list = line.split()
         if len(line_split_list) >= 2:
-            # print(line_list)
-            if re.search(r'port:port[1-5]', line_split_list[1]):
-                print(line)
-            elif line_split_list[1] == '3':
-                print(line)
 
-        # if re.search(PATTERN_HOST, line):  # [host=host_name]
-        #     value = return_value(line)
-        #     if value:
-        #         if not host_name:
-        #             host_name = value
-        #         else:
-        #             raise ConfigurationError('duplicate host definition')
-        #     else:
-        #         raise ConfigurationError('host name missing')
-        #
-        # elif re.search(PATTERN_ROOT, line):  # [root_folder=directory]
-        #     root_folder = return_value(line)
-        #     if root_folder:
-        #         root_folder = append_delimiter(root_folder)
-        #     else:
-        #         raise ConfigurationError('root folder missing')
-        #
-        # elif re.search(PATTERN_FOLDER, line):  # [folder=directory]
-        #     folder = return_value(line)
-        #     if folder:
-        #         folder = append_delimiter(folder)
-        #         folder_defined = True
-        #     else:
-        #         raise ConfigurationError('folder missing')
-        #
-        # else:
-        #     new_file_name = line    # file name
-        #     if root_folder and folder_defined:
-        #         found_file_list.append(root_folder + folder + new_file_name)
-        #     else:
-        #         raise ConfigurationError('root_folder or folder not defined for ' + new_file_name)
+            if re.search(r'port:port[1-5]', line_split_list[1]):
+                found_file_list.append(line)
+
+            elif line_split_list[1] == '3':
+                found_file_list.append(line)
 
     f.close()
     return found_file_list
+
+
+def print_list(input_list):
+    """
+    Function that iterates over a list and print each element.
+    :param input_list: list which wanna print.
+    :type input_list: list
+    """
+    for element in input_list:
+        print(element)
 
 
 def get_arguments(argv):
@@ -127,12 +104,25 @@ if __name__ == '__main__':
     #     exit(0)
 
     # Read configuration file(s)
-    file_list = []
+    port_list = []
+    instrument_port_list = []
+    instrument_list = []
     try:
-        file_list = read_configuration_file_list(FILE_CONF_LIST)
+        port_list = read_configuration('agSeqPorts.pv')
+        instrument_list = read_configuration('ag_sf.lut')
     except FileNotFoundError as e:
         print(e)
         exit(0)
     except ConfigurationError as e:
         print(e)
         exit(0)
+
+    instrument_port_list = instrument_to_search(port_list)
+
+    print_list(port_list)
+    print_list(instrument_list)
+
+
+
+
+
