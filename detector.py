@@ -1,6 +1,10 @@
 import re
 import sys
+import smtplib
 from argparse import Namespace, ArgumentParser
+from email.message import EmailMessage
+
+EMAILS_TO_SEND = ['brojas@gemini.edu']
 
 
 class ConfigurationError(Exception):
@@ -16,18 +20,17 @@ def search_duplicates(dict_tables):
     :param dict_tables:
     :type dict_tables: dict
     :return:
-    :rtype:
+    :rtype: dict
     """
-    compare_dict = {}
+    duplicate_dict = {}
 
     for key, value in dict_tables.items():
-        compare_dict.setdefault(tuple(value), set()).add(key)
+        if tuple(value) not in duplicate_dict:
+            duplicate_dict[tuple(value)] = [key]
+        else:
+            duplicate_dict[tuple(value)].append(key)
 
-    result = [values for key, values in compare_dict.items()
-              if len(values) > 1]
-
-    # print("duplicates", result)
-    return result
+    return duplicate_dict
 
 
 def create_dict_for_search_duplicates(instruments_list):
@@ -66,40 +69,24 @@ def search_instrument(instruments_list, instruments_ports_list):
     :rtype: dict
     """
     finded_dict = {}
-    key = ''
-    value = ''
 
-    finded_gcal2_list = []
-    finded_list = []
-    not_finded__gcal2_list = []
-    not_finded_list = []
     for instrument_port in instruments_ports_list:
+        key = ''
+        value = ''
         for instrument in instruments_list:
             instrument_split = instrument.split()
 
             if 'gcal2' + instrument_port == instrument_split[0]:
-                # finded_gcal2_list.append('gcal2' + instrument_port)
-                # print('match', 'gcal2' + instrument_port)
                 value = 'gcal2' + instrument_port
             elif instrument_port == instrument_split[0]:
-                # finded_list.append(instrument_port)
                 key = instrument_port
 
         if not key:
             finded_dict['emptyKey_' + instrument_port] = value
-        elif not value:
-            finded_dict[key] = 'emptyValue_' + instrument_port
         else:
             finded_dict[key] = value
 
-        # if 'gcal2' + instrument_port not in finded_gcal2_list:
-        #     not_finded__gcal2_list.append('gcal2' + instrument_port)
-        #     # print("don't match", 'gcal2' + instrument_port)
-        # elif instrument_port not in finded_list:
-        #     not_finded_list.append(instrument_port)
-
     print(finded_dict)
-    # print(finded_list, finded_gcal2_list, not_finded_list, not_finded__gcal2_list)
     return finded_dict
 
 
@@ -192,6 +179,76 @@ def get_arguments(argv):
     return parser.parse_args(argv[1:])
 
 
+def configure_email(instrument, duplicates):
+    """
+
+    :param instrument:
+    :type instrument: dict
+    :param duplicates:
+    :type duplicates: dict
+    """
+    duplicates_problems = ''
+    instruments_problems = ''
+
+    for key, value in instrument.items():
+        emptykey = ''
+        emptyvalue = ''
+        if re.search('emptyKey_', key) or not value:
+            if re.search('emptyKey_', key):
+                emptykey_split = key.split('_')
+                emptykey = emptykey_split[-1] + ' could not be found'
+                if not value:
+                    emptyvalue = ' and gcal2' + emptykey_split[-1] + ' neither'
+            elif not value:
+                emptyvalue = 'gcal2' + key + ' could not be found'
+            instruments_problems = instruments_problems + emptykey + emptyvalue + '\n'
+
+    print(instruments_problems)
+
+    for key, value in duplicates.items():
+        if len(value) > 1:
+            duplicates_problems = duplicates_problems + 'Elements ' + str(value) + ' has duplicate values: ' + str(
+                key) + '\n'
+    print(duplicates_problems)
+
+    if instruments_problems and duplicates_problems:
+
+        head_instruments = 'Instruments not found:' + "\n" + instruments_problems
+        head_duplicates = 'Duplicates issues:' + "\n" + duplicates_problems
+        content = head_instruments + "\n" + head_duplicates
+        send_email(content)
+
+    elif instruments_problems and not duplicates_problems:
+
+        head_instruments = 'Instruments not found:' + "\n" + instruments_problems
+        send_email(head_instruments)
+
+    elif not instruments_problems and duplicates_problems:
+
+        head_duplicates = 'Duplicates issues:' + "\n" + duplicates_problems
+        send_email(head_duplicates)
+
+
+def send_email(content):
+    """
+
+    :param content:
+    :type content: str
+    """
+    for email in EMAILS_TO_SEND:
+        print('Email send to ' + email)
+        msg = EmailMessage()
+        msg['Subject'] = 'Issues detected in ag_sf.lut'
+        msg['From'] = 'brojas@gemini.edu'
+        msg['To'] = email
+        note = '\n' + '\n' + 'NOTE: Please check each port with the instrument in agSeqPorts.pv'
+        message = content + note
+        msg.set_content(message)
+        s = smtplib.SMTP('localhost')
+        s.send_message(msg)
+        s.quit()
+
+
 if __name__ == '__main__':
 
     # Get file list from the command line. Terminate if no files are specified.
@@ -227,6 +284,8 @@ if __name__ == '__main__':
 
     tables_dict = create_dict_for_search_duplicates(instrument_list)
     duplicate_entries = search_duplicates(tables_dict)
+
+    configure_email(instruments_finded, duplicate_entries)
 
     print_list(port_list)
     print_list(instrument_list)
