@@ -1,0 +1,785 @@
+# pvload parameter definition file for A&G sequencer port database
+#
+# This is the version for Gemini South
+
+# This file must be updated each time an instrument is put on or
+# taken off the telescope. The names of the strings that should 
+# be entered for each instrument are given below. Apart from
+# capitalisation you must type the names as given. Failure to do
+# so will result in the database assuming that the instrument
+# is not mounted on the telescope.
+#
+#  Instrument    Port name
+#    GCAL          GCAL
+#    GAOS          Altair
+#    NIRI          NIRI
+#    GMOS          GMOS
+#    GNIRS         GNIRS
+#    NIFS          NIFS
+#    Michelle      Michelle
+#    TRECS         TRECS
+#    Flamingos-2   F2
+#    NICI          NICI 
+#    GPI           GPI
+#    Visitor       VISITOR
+#
+# Updated with CR-11 1029 (trecs installation set back in the telescope) 13/06/11
+# Updated with CR-11 1170 (gsaoi, canopus installation in the telescope) 29/11/2011
+# Updated with CR-12 1317 (trecs installation set back in the telescope) 30/04/2012
+# Updated with CR-13  (GMOS removed from the telescope the telescope) 14/10/2013
+# Updated with CR-13 1828 (GPI into the A&G)
+# Updated with CR-14 1969 (GPI moved form port 1 to port 5)
+# Updated with CR-14 1971 (GSAOI: installation on Port 1)" ;
+# Updated with CR-11 1029 (trecs installation set back in the telescope) 13/06/11
+# Updated with CR-11 1170 (gsaoi, canopus installation in the telescope) 29/11/2011
+# Updated with CR-12 1317 (trecs installation set back in the telescope) 30/04/2012
+# Updated with CR-13  (GMOS removed from the telescope the telescope) 14/10/2013
+# Updated with CR-13 1828 (GPI into the A&G)
+# Updated with CR-14 1969 (GPI moved form port 1 to port 5)
+# Updated with CR-14 1971 (GSAOI: installation on Port 1)
+# Updated with TR-14 9115 (GSAOI Removal From ISS Port 1), TR-14 9124: (GPI Installation on ISS Port 1)
+# Updated with TR-14 9471 (GSAOI: installation on Port 1), TR-14 9472: (GPI Removal From ISS Port 1)
+# Updated with TR-14 9471 (GSAOI: installation on Port 1), TR-14 9472: (GPI Removal From ISS Port 1)
+# Updated with TR-14 9580 (GSAOI Removal from ISS Port 1), TR-14 9582 (GPI Installation on ISS Port 1)
+# Updated with TR-14 9668 (GPI Installation on ISS Port 1)
+# Updated with CR-15 2232 (New relative orientation angle for GMOS-S) RRO
+# Updated with TR-15 10420 (GPI Removal from ISS Port 1) RRO
+# Updated with TR-15 10483 (GPI Installation on ISS Port 1) RRO
+# Updated with TR-15 10483 (GSAOI Installation on ISS Port 1) PGX
+# Updated with TR-15 10734 (Canopus Removal) RRO
+# Updated with TR-15 10741 (F2 Removal) RRO
+# Updated with TR-16 11179/11180 (GPI Removal/GSAOI Installation) PGX
+# Updated with TR-16 11730 (GPI Removal/GSAOI Installation) RRO
+# Updated with TR-16 11711 (F2 Installation) CUR
+# Updated with TR-16 11950 (GPI Installation) BC-RR-CUR
+# Updated with TR-16 12111 (GPI Removal/GSAOI Installation) BC
+# Updated with TR-16 12209 (GSAOI Removal/GPI Installation) BC/RR
+# Updated with TR-16 12257 (GPI Removal/Ballast Weight Installation) BC 
+# Updated with TR-16 12322 (Remove Phoenix and install F2) PGX
+# Updated with TR-16 12353 (Remove GPI/install GSAOI) BC
+# Updated with TR-17 12402 (Remove GSAOI/install GPI) BC/KG
+# Updated with TR-17 12506 (Remove GPI/install GSAOI) BC
+# Updated with TR-17 12570 (Remove GSAOI/install GPI) BC
+# Updated with TR-17 12646 (Remove GPI/install GSAOI) BC 
+# Updated with TR-17 12727 (Remove GSAOI/install GPI) BC/CU
+# Updated with TR-17 12793 (Remove GMOS/install DSSI) CU
+# Updated with TR-17 12914 (F2: Installation on telescope port #5) PGX
+# Updated with TR-17 12921 (Remove GPI) CU
+# Updated with TR-17 12945 (Install GPI) BC
+# Updated with TR-17  (Remove GPI, Install GSAOI) CU
+# Updated with TR-17 13261 (Remove GSAOI Install GPI)
+# Updated with TR-17 13382 (Remove GPI Install GSAOI)
+# Updated with TR-17 13438 (Remove GSAOI install GPI) PGX
+# Updated with TR-18 13633 (Remove GPI install GHOST) BC
+# Updated with TR-18 13677 (Remove GHOST install GPI) BC
+# Updated with TR-18 13672 (Remove GPI install GSAOI) BC
+# Updated with TR-18 14255 (Remove BWA install GPI) BC
+# Updated with TR-18 14353 (Remove GPI install GSAOI) BC
+# Updated with TR-18 14549 (Remove BWA install GPI) IA&BC 
+# Updated with TR-18 14879 (Remove GPI install GHOST) BC
+# Updated with TR-18 14881 (Remove GHOST install GPI) BC
+# Updated with TR-19 15056 (Remove GPI install GSAOI) BC
+# Updated with TR-19 15102 (Remove GSAOI install GPI) BC
+# Updated with TR-19 15277 (Remove GPI install GSAOI) BC
+# Updated with TR-19 15354 (Install GPI) BC
+# Updated with TR-19 15486 (Remove GSAOI install GPI) BC
+# Updated with TR-19 15706 (Remove GPI intall GSAOI) MDW 
+# Updated with TR-19 15903 (Install GPI ) RRO 29/07/2019 
+# Updated with TR-19 15981 (Install F2 ) MDW 28/08/2019 
+# Updated with TR-19 16804 (Install GSAOI ) RRO 25/09/2019 
+# Updated with TR-19 16106 (Remove F2 ) RRO 30/09/2019 
+# Updated with TR-19 16256 (Install GPI ) TDG 08/11/2019 
+# Updated with TR-19 16341 (Install GSAOI) TDG 02/12/2019 
+# Updated with TR-19 16401 (Remove GSAOI) MDW 16/12/2019
+# Updated with TR-19 16427 (Install GPI) RRO 19/12/2019
+
+
+# commented out lines grouped here for readability
+#string $(top)port:port1 = "Ballast Weight" ;
+#string $(top)port:port1 = "GSAOI" ;
+#string $(top)port:port1 = "GMOS" ;
+#string $(top)port:port1 = "GPI" ;
+#string $(top)port:port1 = "" ;
+#string $(top)port:port5 = "" ;
+#string $(top)port:port5 = "GSAOI" ;
+#string $(top)port:port5 = "NICI" ;
+#string $(top)port:port5 = "PHOENIX";
+#string $(top)port:port4 = "CANOPUS" ;
+#string $(top)port:port5 = "PHOENIX" ;
+#string $(top)port:port3 = "GMOS" ;
+#string $(top)port:port5 = "F2" ;
+#string $(top)port:port5 = "" ;
+#string $(top)port:port1 = "GPI" ;
+#
+
+string $(top)port:port1 = "VISITOR" ;
+string $(top)port:port2 = "GCAL" ;
+string $(top)port:port3 = "GMOS" ;
+string $(top)port:port4 = "CANOPUS" ;
+string $(top)port:port5 = "F2" ;
+
+string $(top)port:portMap.PROC = "1" ;
+
+#
+# Coordinate transformation data for the NIRI OIWFS.
+# The transformation as input takes niri coords and converts them to TCS coords
+# For each instrument there are two sets of data. One is for when the light
+# is being routed through the AO system and the other for when it is not. 
+# N.B. If the transformation is a rigid body one then the two scales
+# should be equal and the non-perpendicularity should be zero.
+#
+# This is the non AO data section
+#
+# Port 1 (the upward looking port)
+group {
+ double $(top)niri:1:orient  = -130.35 ;
+ double $(top)niri:1:nonperp = 0.0 ;
+ double $(top)niri:1:xscale  = 0.5 ;
+ double $(top)niri:1:yscale  = 0.5 ;
+ double $(top)niri:1:xzero   = 2.1 ;
+ double $(top)niri:1:yzero   = -1.95 ; 
+ double $(top)niri:1:zscale  = 1.0 ;
+ double $(top)niri:1:zzero   = 0.0 ;
+}
+# Port 3 (from data of May 6 2002) 
+group {
+ double $(top)niri:3:orient  = -129.402 ;
+ double $(top)niri:3:nonperp = 0.0 ;
+ double $(top)niri:3:xscale  = -0.5 ;
+ double $(top)niri:3:yscale  = 0.5 ;
+ double $(top)niri:3:xzero   = 27.07 ;
+ double $(top)niri:3:yzero   = 11.66 ; 
+ double $(top)niri:3:zscale  = 1.0 ;
+ double $(top)niri:3:zzero   = 0.0 ;
+}
+# Port 5 
+group {
+ double $(top)niri:5:orient  = 49.883 ;
+ double $(top)niri:5:nonperp = 0.0 ;
+ double $(top)niri:5:xscale  = -0.5 ;
+ double $(top)niri:5:yscale  = 0.5 ;
+ double $(top)niri:5:xzero   = 16.09 ;
+ double $(top)niri:5:yzero   = 11.31 ; 
+ double $(top)niri:5:zscale  = 1.0 ;
+ double $(top)niri:5:zzero   = 0.0 ;
+}
+#
+# These coefficients are used when the AO system is deployed
+#
+# Port 1 (the upward looking port - not yet measured)
+group {
+ double $(top)niri:1:ao:orient  = 0.0 ;
+ double $(top)niri:1:ao:nonperp = 0.0 ;
+ double $(top)niri:1:ao:xscale  = 0.5 ;
+ double $(top)niri:1:ao:yscale  = 0.5 ;
+ double $(top)niri:1:ao:xzero   = 0.0 ;
+ double $(top)niri:1:ao:yzero   = 0.0 ; 
+ double $(top)niri:1:ao:zscale  = 1.0 ;
+ double $(top)niri:1:ao:zzero   = 0.0 ;
+}
+# Port 3 (from data of Nov 17 2002) 
+group {
+ double $(top)niri:3:ao:orient  = -41.46 ;
+ double $(top)niri:3:ao:nonperp = 0.0 ;
+ double $(top)niri:3:ao:xscale  = -0.5 ;
+ double $(top)niri:3:ao:yscale  = 0.5 ;
+ double $(top)niri:3:ao:xzero   = -7.434 ;
+ double $(top)niri:3:ao:yzero   = 10.119 ; 
+ double $(top)niri:3:ao:zscale  = 1.0 ;
+ double $(top)niri:3:ao:zzero   = 0.0 ;
+}
+# Port 5 (not yet measured)
+group {
+ double $(top)niri:5:ao:orient  = 0.0 ;
+ double $(top)niri:5:ao:nonperp = 0.0 ;
+ double $(top)niri:5:ao:xscale  = -0.5 ;
+ double $(top)niri:5:ao:yscale  = 0.5 ;
+ double $(top)niri:5:ao:xzero   = 0.0 ;
+ double $(top)niri:5:ao:yzero   = 0.0 ; 
+ double $(top)niri:5:ao:zscale  = 1.0 ;
+ double $(top)niri:5:ao:zzero   = 0.0 ;
+}
+#
+# Now trigger an update of the transformations
+#
+string $(top)niri:1:transform.PROC = "1" ;
+
+#
+# Coordinate transformation data for the NIRS OIWFS.
+# The transformation as input takes niri coords and converts them to TCS coords
+# For each instrument there are two sets of data. One is for when the light
+# is being routed through the AO system and the other for when it is not. 
+# N.B. If the transformation is a rigid body one then the two scales
+# should be equal and the non-perpendicularity should be zero.
+#
+# This is the non AO data section
+#
+# Port 1 (not yet measured)
+group {
+ double $(top)nirs:1:orient  = 0.0 ;
+ double $(top)nirs:1:nonperp = 0.0 ;
+ double $(top)nirs:1:xscale  = 0.5 ;
+ double $(top)nirs:1:yscale  = 0.5 ;
+ double $(top)nirs:1:xzero   = 0.0 ;
+ double $(top)nirs:1:yzero   = 0.0 ; 
+ double $(top)nirs:1:zscale  = 1.0 ;
+ double $(top)nirs:1:zzero   = 0.0 ;
+}
+# Port 3 (not yet measured) 
+group {
+ double $(top)nirs:3:orient  = 0.0 ;
+ double $(top)nirs:3:nonperp = 0.0 ;
+ double $(top)nirs:3:xscale  = 0.5 ;
+ double $(top)nirs:3:yscale  = 0.5 ;
+ double $(top)nirs:3:xzero   = 0.0 ;
+ double $(top)nirs:3:yzero   = 0.0 ; 
+ double $(top)nirs:3:zscale  = 1.0 ;
+ double $(top)nirs:3:zzero   = 0.0 ;
+}
+# Port 5 - from data of 5th Feb 2004 
+group {
+ double $(top)nirs:5:orient  = 179.8 ;
+ double $(top)nirs:5:nonperp = 0.0 ;
+ double $(top)nirs:5:xscale  = 0.51 ;
+ double $(top)nirs:5:yscale  = 0.51 ;
+ double $(top)nirs:5:xzero   = -0.43 ;
+ double $(top)nirs:5:yzero   = -2.52 ; 
+ double $(top)nirs:5:zscale  = 1.0 ;
+ double $(top)nirs:5:zzero   = 0.0 ;
+}
+#
+# These coefficients are used when the AO system is deployed
+#
+# Port 1 (the upward looking port - not yet measured)
+group {
+ double $(top)nirs:1:ao:orient  = 0.0 ;
+ double $(top)nirs:1:ao:nonperp = 0.0 ;
+ double $(top)nirs:1:ao:xscale  = 0.5 ;
+ double $(top)nirs:1:ao:yscale  = 0.5 ;
+ double $(top)nirs:1:ao:xzero   = 0.0 ;
+ double $(top)nirs:1:ao:yzero   = 0.0 ; 
+ double $(top)nirs:1:ao:zscale  = 1.0 ;
+ double $(top)nirs:1:ao:zzero   = 0.0 ;
+}
+# Port 3 (not yet measured) 
+group {
+ double $(top)nirs:3:ao:orient  = 0.0 ;
+ double $(top)nirs:3:ao:nonperp = 0.0 ;
+ double $(top)nirs:3:ao:xscale  = 0.5 ;
+ double $(top)nirs:3:ao:yscale  = 0.5 ;
+ double $(top)nirs:3:ao:xzero   = 0.0 ;
+ double $(top)nirs:3:ao:yzero   = 0.0 ; 
+ double $(top)nirs:3:ao:zscale  = 1.0 ;
+ double $(top)nirs:3:ao:zzero   = 0.0 ;
+}
+# Port 5 (not yet measured)
+group {
+ double $(top)nirs:5:ao:orient  = 0.0 ;
+ double $(top)nirs:5:ao:nonperp = 0.0 ;
+ double $(top)nirs:5:ao:xscale  = 0.5 ;
+ double $(top)nirs:5:ao:yscale  = 0.5 ;
+ double $(top)nirs:5:ao:xzero   = 0.0 ;
+ double $(top)nirs:5:ao:yzero   = 0.0 ; 
+ double $(top)nirs:5:ao:zscale  = 1.0 ;
+ double $(top)nirs:5:ao:zzero   = 0.0 ;
+}
+#
+# Now trigger an update of the transformations
+#
+string $(top)nirs:1:transform.PROC = "1" ;
+
+#
+# Coordinate transformation data for the GMOS OIWFS.
+# The transformation as input takes gmos coords and converts them to TCS coords
+# N.B. If the transformation is a rigid body one then the two scales
+# should be equal and the non-perpendicularity should be zero.
+#
+#
+# These coefficients are used when the AO system is not in use
+#
+# Port 1 (the upward looking port)
+group {
+ double $(top)gmos:1:orient  = 0.0 ;
+ double $(top)gmos:1:nonperp = 0.0 ;
+ double $(top)gmos:1:xscale  = -1.0 ;
+ double $(top)gmos:1:yscale  = -1.0 ;
+ double $(top)gmos:1:xzero   = 0.0 ;
+ double $(top)gmos:1:yzero   = 0.0 ; 
+ double $(top)gmos:1:zscale  = 1.0 ;
+ double $(top)gmos:1:zzero   = 0.0 ;
+}
+# Port 3 - measured 20/Oct/2008
+#group {
+# double $(top)gmos:3:orient  = 0.119 ;
+# double $(top)gmos:3:nonperp = 0.0 ;
+# double $(top)gmos:3:xscale  = -1.0 ;
+# double $(top)gmos:3:yscale  = 1.0 ;
+# double $(top)gmos:3:xzero   = 0.0 ;
+# double $(top)gmos:3:yzero   = 0.0 ; 
+# double $(top)gmos:3:zscale  = 1.0 ;
+# double $(top)gmos:3:zzero   = 0.0 ;
+#}
+# Port 3 - Updated as per CR-10 0501. CUR May07 2010.
+#group {
+# double $(top)gmos:3:orient  = 0.26 ;
+# double $(top)gmos:3:nonperp = 0.0 ;
+# double $(top)gmos:3:xscale  = -1.0 ;
+# double $(top)gmos:3:yscale  = 1.0 ;
+# double $(top)gmos:3:xzero   = 0.0 ;
+# double $(top)gmos:3:yzero   = 0.0 ; 
+# double $(top)gmos:3:zscale  = 1.0 ;
+# double $(top)gmos:3:zzero   = 0.0 ;
+#}
+# Port 3 - Updated as per CR-10 0506. CUR May09 2010.
+# group {
+# double $(top)gmos:3:orient  = 0.00 ;
+# double $(top)gmos:3:nonperp = 0.0 ;
+# double $(top)gmos:3:xscale  = -1.0 ;
+# double $(top)gmos:3:yscale  = 1.0 ;
+# double $(top)gmos:3:xzero   = 0.0 ;
+# double $(top)gmos:3:yzero   = 0.0 ; 
+# double $(top)gmos:3:zscale  = 1.0 ;
+# double $(top)gmos:3:zzero   = 0.0 ;
+#}
+# Port 3 - Updated Aug 14 2012 EM
+#group {
+#double $(top)gmos:3:orient  = -0.05 ;
+#double $(top)gmos:3:nonperp = 0.0 ;
+#double $(top)gmos:3:xscale  = -1.0 ; 
+#double $(top)gmos:3:yscale  = 1.0 ;
+#double $(top)gmos:3:xzero   = 0.0 ;
+#double $(top)gmos:3:yzero   = 0.0 ;
+#double $(top)gmos:3:zscale  = 1.0 ;
+#double $(top)gmos:3:zzero   = 0.0 ;
+#}
+# Port 3 - Updated Aug 28 2019 GG
+group {
+double $(top)gmos:3:orient  = 0.19 ;
+double $(top)gmos:3:nonperp = 0.0 ;
+double $(top)gmos:3:xscale  = -1.0 ; 
+double $(top)gmos:3:yscale  = 1.0 ;
+double $(top)gmos:3:xzero   = 0.0 ;
+double $(top)gmos:3:yzero   = 0.0 ;
+double $(top)gmos:3:zscale  = 1.0 ;
+double $(top)gmos:3:zzero   = 0.0 ;
+}
+# Port 5 - measured 03/07/2002
+group {
+ double $(top)gmos:5:orient  =  0.0 ;
+ double $(top)gmos:5:nonperp =  0.0 ;
+ double $(top)gmos:5:xscale  =  1.0 ;
+ double $(top)gmos:5:yscale  = -1.0 ;
+ double $(top)gmos:5:xzero   =  0.0 ;
+ double $(top)gmos:5:yzero   =  0.0 ;
+ double $(top)gmos:5:zscale  =  1.0 ;
+ double $(top)gmos:5:zzero   =  0.0 ;
+}
+#
+# These coefficients are used when the AO system is in use
+#
+# Port 1 (the upward looking port - not yet measured)
+group {
+ double $(top)gmos:1:ao:orient  = 0.0 ;
+ double $(top)gmos:1:ao:nonperp = 0.0 ;
+ double $(top)gmos:1:ao:xscale  = 1.0 ;
+ double $(top)gmos:1:ao:yscale  = 1.0 ;
+ double $(top)gmos:1:ao:xzero   = 0.0 ;
+ double $(top)gmos:1:ao:yzero   = 0.0 ; 
+ double $(top)gmos:1:ao:zscale  = 1.0 ;
+ double $(top)gmos:1:ao:zzero   = 0.0 ;
+}
+# Port 3  (not yet measured)
+group {
+ double $(top)gmos:3:ao:orient  = 0.0 ;
+ double $(top)gmos:3:ao:nonperp = 0.0 ;
+ double $(top)gmos:3:ao:xscale  = 1.0 ;
+ double $(top)gmos:3:ao:yscale  = 1.0 ;
+ double $(top)gmos:3:ao:xzero   = 0.0 ;
+ double $(top)gmos:3:ao:yzero   = 0.0 ; 
+ double $(top)gmos:3:ao:zscale  = 1.0 ;
+ double $(top)gmos:3:ao:zzero   = 0.0 ;
+}
+# Port 5 - (not yet measured) 
+group {
+ double $(top)gmos:5:ao:orient  =  0.0 ;
+ double $(top)gmos:5:ao:nonperp =  0.0 ;
+ double $(top)gmos:5:ao:xscale  =  1.0 ;
+ double $(top)gmos:5:ao:yscale  =  1.0 ;
+ double $(top)gmos:5:ao:xzero   =  0.0 ;
+ double $(top)gmos:5:ao:yzero   =  0.0 ;
+ double $(top)gmos:5:ao:zscale  =  1.0 ;
+ double $(top)gmos:5:ao:zzero   =  0.0 ;
+}
+#
+# Now trigger an update of the transformations
+#
+string $(top)gmos:1:transform.PROC = "1" ;
+
+
+#
+# Coordinate transformation data for the Flamingos-2 OIWFS.
+# The transformation as input takes Flamingos-2 coords and converts them to TCS coords
+# N.B. If the transformation is a rigid body one then the two scales
+# should be equal and the non-perpendicularity should be zero.
+#
+#
+# These coefficients are used when the AO system is not in use
+#
+# Port 1 (not yet measured) 
+group {
+ double $(top)f2:1:orient  = 0.0 ;
+ double $(top)f2:1:nonperp = 0.0 ;
+ double $(top)f2:1:xscale  = 1.0 ;
+ double $(top)f2:1:yscale  = 1.0 ;
+ double $(top)f2:1:xzero   = 0.0 ;
+ double $(top)f2:1:yzero   = 0.0 ; 
+ double $(top)f2:1:zscale  = 1.0 ;
+ double $(top)f2:1:zzero   = 0.0 ;
+}
+# Port 3 (not yet measured) 
+group {
+ double $(top)f2:3:orient  = 0.0 ;
+ double $(top)f2:3:nonperp = 0.0 ;
+ double $(top)f2:3:xscale  = 1.0 ;
+ double $(top)f2:3:yscale  = 1.0 ;
+ double $(top)f2:3:xzero   = 0.0 ;
+ double $(top)f2:3:yzero   = 0.0 ; 
+ double $(top)f2:3:zscale  = 1.0 ;
+ double $(top)f2:3:zzero   = 0.0 ;
+}
+# Port 5 - (not yet measured) 
+group {
+ double $(top)f2:5:orient  =  0.43 ;
+ double $(top)f2:5:nonperp =  0.0 ;
+ double $(top)f2:5:xscale  = -1.0 ;
+ double $(top)f2:5:yscale  = -1.0 ;
+ double $(top)f2:5:xzero   =  0.0 ;
+ double $(top)f2:5:yzero   =  0.0 ;
+ double $(top)f2:5:zscale  =  1.0 ;
+ double $(top)f2:5:zzero   =  0.0 ;
+}
+#
+# These coefficients are used when the AO system is in use
+#
+# Port 1 (the upward looking port - not yet measured)
+group {
+ double $(top)f2:1:ao:orient  = 0.0 ;
+ double $(top)f2:1:ao:nonperp = 0.0 ;
+ double $(top)f2:1:ao:xscale  = 1.0 ;
+ double $(top)f2:1:ao:yscale  = 1.0 ;
+ double $(top)f2:1:ao:xzero   = 0.0 ;
+ double $(top)f2:1:ao:yzero   = 0.0 ; 
+ double $(top)f2:1:ao:zscale  = 1.0 ;
+ double $(top)f2:1:ao:zzero   = 0.0 ;
+}
+# Port 3  (not yet measured)
+group {
+ double $(top)f2:3:ao:orient  = 0.0 ;
+ double $(top)f2:3:ao:nonperp = 0.0 ;
+ double $(top)f2:3:ao:xscale  = 1.0 ;
+ double $(top)f2:3:ao:yscale  = 1.0 ;
+ double $(top)f2:3:ao:xzero   = 0.0 ;
+ double $(top)f2:3:ao:yzero   = 0.0 ; 
+ double $(top)f2:3:ao:zscale  = 1.0 ;
+ double $(top)f2:3:ao:zzero   = 0.0 ;
+}
+# Port 5 - (not yet measured) 
+group {
+ double $(top)f2:5:ao:orient  = -0.42;
+ double $(top)f2:5:ao:nonperp =  0.0 ;
+ double $(top)f2:5:ao:xscale  =  1.0 ;
+ double $(top)f2:5:ao:yscale  =  1.0 ;
+ double $(top)f2:5:ao:xzero   =  0.0 ;
+ double $(top)f2:5:ao:yzero   =  0.0 ;
+ double $(top)f2:5:ao:zscale  =  1.0 ;
+ double $(top)f2:5:ao:zzero   =  0.0 ;
+}
+#
+# Now trigger an update of the transformations
+#
+string $(top)f2:1:transform.PROC = "1" ;
+
+#
+# Coordinate transformation data for the NICI OIWFS.
+# The transformation as input takes niri coords and converts them to TCS coords
+# For each instrument there are two sets of data. One is for when the light
+# is being routed through the AO system and the other for when it is not. 
+# N.B. If the transformation is a rigid body one then the two scales
+# should be equal and the non-perpendicularity should be zero.
+#
+# This is the non AO data section
+#
+# Port 1 (not yet measured)
+#group {
+# double $(top)nici:1:orient  = 4.49 ;
+# double $(top)nici:1:nonperp = 0.0 ;
+# double $(top)nici:1:xscale  = 1.094 ;
+# double $(top)nici:1:yscale  = 1.094 ;
+# double $(top)nici:1:xzero   = -3.642 ;
+# double $(top)nici:1:yzero   = 0.933 ; 
+# double $(top)nici:1:zscale  = 0.0 ;
+# double $(top)nici:1:zzero   = 0.0 ;
+#}
+# Changed  14/Oct/09 CUR (CR-09 0237)
+#group {
+# double $(top)nici:1:orient  = 247.63 ;
+# double $(top)nici:1:nonperp = 0.0 ;
+# double $(top)nici:1:xscale  = -1.082206 ;
+# double $(top)nici:1:yscale  = 1.082206 ;
+# double $(top)nici:1:xzero   = -3.642 ;
+# double $(top)nici:1:yzero   = 0.933 ; 
+# double $(top)nici:1:zscale  = 0.0 ;
+# double $(top)nici:1:zzero   = 0.0 ;
+#}
+# Changed  06/Nov/09 CUR (CR-09 0270)
+#group {
+# double $(top)nici:1:orient  = -0.18 ;
+# double $(top)nici:1:nonperp = 0.0 ;
+# double $(top)nici:1:xscale  = -1.082 ;
+# double $(top)nici:1:yscale  = 1.082 ;
+# double $(top)nici:1:xzero   = -1.800 ;
+# double $(top)nici:1:yzero   = -0.4 ;
+# double $(top)nici:1:zscale  = 1.0 ;
+# double $(top)nici:1:zzero   = 0.0 ;
+#}
+# Changed  30/Dec/09 CUR (CR-09 0321)
+#group {
+# double $(top)nici:1:orient  = -0.18 ;
+# double $(top)nici:1:nonperp = 0.0 ;
+# double $(top)nici:1:xscale  = -1.082 ;
+# double $(top)nici:1:yscale  = 1.082 ;
+# double $(top)nici:1:xzero   = -2.800 ;
+# double $(top)nici:1:yzero   = 1.4 ;
+# double $(top)nici:1:zscale  = 1.0 ;
+# double $(top)nici:1:zzero   = 0.0 ;
+#}
+# Changed  18/Jan/11 CUR (CR-11 0857)
+#group {
+# double $(top)nici:1:orient  = -0.18 ;
+# double $(top)nici:1:nonperp = 0.0 ;
+# double $(top)nici:1:xscale  = -1.082 ;
+# double $(top)nici:1:yscale  = 1.082 ;
+# double $(top)nici:1:xzero   = -2.300 ;
+# double $(top)nici:1:yzero   = 0.3 ;
+# double $(top)nici:1:zscale  = 1.0 ;
+# double $(top)nici:1:zzero   = 0.0 ;
+#}
+# Changed  18/Mar/11 EJC (CR-11 0939)
+#group {
+# double $(top)nici:1:orient  = -0.18 ;
+# double $(top)nici:1:nonperp = 0.0 ;
+# double $(top)nici:1:xscale  = -1.082 ;
+# double $(top)nici:1:yscale  = 1.082 ;
+# double $(top)nici:1:xzero   = -1.20 ;
+# double $(top)nici:1:yzero   = 1.70 ;
+# double $(top)nici:1:zscale  = 1.0 ;
+# double $(top)nici:1:zzero   = 0.0 ;
+#}
+
+# Changed  03/May/11 ALO (values measured after ENT 11-0262)
+# Changed 02/Jul/13 RR (CR-13 1689)
+group {
+ double $(top)nici:1:orient  = -0.18 ;
+ double $(top)nici:1:nonperp = 0.0 ;
+ double $(top)nici:1:xscale  = -1.082 ;
+ double $(top)nici:1:yscale  = 1.082 ;
+ double $(top)nici:1:xzero   = 0.5 ;
+ double $(top)nici:1:yzero   = 0.7 ;
+ double $(top)nici:1:zscale  = 1.0 ;
+ double $(top)nici:1:zzero   = 0.0 ;
+}
+
+# Port 3 (not yet measured) 
+group {
+ double $(top)nici:3:orient  = 0.0 ;
+ double $(top)nici:3:nonperp = 0.0 ;
+ double $(top)nici:3:xscale  = 1.0 ;
+ double $(top)nici:3:yscale  = 1.0 ;
+ double $(top)nici:3:xzero   = 0.0 ;
+ double $(top)nici:3:yzero   = 0.0 ; 
+ double $(top)nici:3:zscale  = 1.0 ;
+ double $(top)nici:3:zzero   = 0.0 ;
+}
+
+# Port 5 - (not yet meassured)
+#group {
+# double $(top)nici:5:orient  = 0.57 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.081 ;
+# double $(top)nici:5:yscale  = 1.081 ;
+# double $(top)nici:5:xzero   = -3.895 ;
+# double $(top)nici:5:yzero   = 2.000 ; 
+# double $(top)nici:5:zscale  = 0.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified July 30, 2008, after NICI run.
+#group {
+# double $(top)nici:5:orient  = 0.29;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.063 ;
+# double $(top)nici:5:yscale  = 1.063 ;
+# double $(top)nici:5:xzero   = -1.782 ;
+# double $(top)nici:5:yzero   = 7.384 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified October 07, 2008, after NICI run. CR 1421
+#group {
+# double $(top)nici:5:orient  = 0.183532;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -1.504704 ;
+# double $(top)nici:5:yzero   = 6.876947 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified April 21, 2010, CR-10 0473
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.65 ;
+# double $(top)nici:5:yzero   = 8.55 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified May 10, 2010, CR-10 0507
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.50 ;
+# double $(top)nici:5:yzero   = -2.90 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified Dec 28, 2010, CR-10 0834
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.80 ;
+# double $(top)nici:5:yzero   = -2.50 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified Jun 28, 2011, After ENT-11 0279
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.60 ;
+# double $(top)nici:5:yzero   = 1.20 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+# Port 5 - Modified Aug 27, 2011, After ENT-11 0294 - EJC
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.2 ;
+# double $(top)nici:5:yzero   = -1.0 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+# Port 5 - Modified Oct 11, 2011, - EM
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.2 ;
+# double $(top)nici:5:yzero   = -0.7 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#
+# Port 5 - Modified Feb 24, 2012, - RRojas
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.2 ;
+# double $(top)nici:5:yzero   = -2.0 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+#
+# Port 5 - Modified Sep 3, 2012, - C. Urrutia (CR-12 1411, TR-12 5649)
+#group {
+# double $(top)nici:5:orient  = 0.183532 ;
+# double $(top)nici:5:nonperp = 0.0 ;
+# double $(top)nici:5:xscale  = 1.082206 ;
+# double $(top)nici:5:yscale  = 1.082206 ;
+# double $(top)nici:5:xzero   = -2.2 ;
+# double $(top)nici:5:yzero   = -1.0 ; 
+# double $(top)nici:5:zscale  = 1.0 ;
+# double $(top)nici:5:zzero   = 0.0 ;
+#}
+
+# Port 5 - Modified 30 May 2013 - P. Gigoux (CR-13 1669)
+group {
+ double $(top)nici:5:orient  = 0.183532 ;
+ double $(top)nici:5:nonperp = 0.0 ;
+ double $(top)nici:5:xscale  = 1.082206 ;
+ double $(top)nici:5:yscale  = 1.082206 ;
+ double $(top)nici:5:xzero   = -2.8 ;
+ double $(top)nici:5:yzero   = -2.5 ; 
+ double $(top)nici:5:zscale  = 1.0 ;
+ double $(top)nici:5:zzero   = 0.0 ;
+}
+
+#
+# These coefficients are used when the AO system is deployed
+#
+# Port 1 (the upward looking port - not yet measured)
+group {
+ double $(top)nici:1:ao:orient  = 0.0 ;
+ double $(top)nici:1:ao:nonperp = 0.0 ;
+ double $(top)nici:1:ao:xscale  = 1.0 ;
+ double $(top)nici:1:ao:yscale  = 1.0 ;
+ double $(top)nici:1:ao:xzero   = 0.0 ;
+ double $(top)nici:1:ao:yzero   = 0.0 ; 
+ double $(top)nici:1:ao:zscale  = 1.0 ;
+ double $(top)nici:1:ao:zzero   = 0.0 ;
+}
+# Port 3 (not yet measured) 
+group {
+ double $(top)nici:3:ao:orient  = 0.0 ;
+ double $(top)nici:3:ao:nonperp = 0.0 ;
+ double $(top)nici:3:ao:xscale  = 1.0 ;
+ double $(top)nici:3:ao:yscale  = 1.0 ;
+ double $(top)nici:3:ao:xzero   = 0.0 ;
+ double $(top)nici:3:ao:yzero   = 0.0 ; 
+ double $(top)nici:3:ao:zscale  = 1.0 ;
+ double $(top)nici:3:ao:zzero   = 0.0 ;
+}
+# Port 5 (not yet measured)
+group {
+ double $(top)nici:5:ao:orient  = 0.0 ;
+ double $(top)nici:5:ao:nonperp = 0.0 ;
+ double $(top)nici:5:ao:xscale  = 1.0 ;
+ double $(top)nici:5:ao:yscale  = 1.0 ;
+ double $(top)nici:5:ao:xzero   = 0.0 ;
+ double $(top)nici:5:ao:yzero   = 0.0 ; 
+ double $(top)nici:5:ao:zscale  = 1.0 ;
+ double $(top)nici:5:ao:zzero   = 0.0 ;
+}
+#
+# Now trigger an update of the transformations
+#
+string $(top)nici:1:transform.PROC = "1" ;
+

@@ -1,0 +1,203 @@
+# UNIT2
+#
+# Named positions for all 3 dimensions of the Science Fold mirror: Rotary table, Tilt and linear.
+#
+# port4     = +X
+# port3     = -Y
+# port5     = +Y
+# port2     = -X
+#
+# modified with new sc fold position for the rotary table for pheonix  03jun2006 AOB 
+# modified with new sci. fold positions for abu and gcal2abu. 04 Sep 2001 - MCH
+# add gcal2fla3, 24 Jun 2002 - MCH
+# update fla3, 17 Oct 2002 - JGY
+# update fla3, 7 Nov 2002 - PP
+# update gcal2gmos, 16 Jan 2003 - BM
+# update gcal2gmos3 and gmos3, 15 Jul 2003 - PP
+# update pho4, 20 Jul 2003 - JGY
+# update gcal2pho4, 30 Jul 2003 - RMG
+# update trecs1, 05 Aug 2003 - MCH
+# update nir5, 05 Feb 2004 - JGY 
+# update nir5, 13 Apr 2004 - JGY (after work done in the SF linear)
+# update gmos3, 14 Apr 2004 - JGY (after work done in the SF linear)
+# update gcal2gmos3, 20 Apr 2004 - BDW
+# update pho4, 15 may 2004 - MCH
+# update pho4, 08 jun 2004 - RMG (new phoenix SF position after shutdown and sf coating)
+# update nirs5, 20 aug 2004 - BDW 
+# add hok4,gcal2hok4, 22 aug 2004 -BDW
+# update nirs5, 26 oct 2004 - RMG
+# update pho4, 16 dec 2004 - RMG
+# update nirs5, 13 jan 2005 - PP
+# update hok4 and uncommented gcal2hok4, 21 jan 2005 - MCH (commented out port2 and gcal2cir1, seems menu options are limited to 13)
+# update nirs5, 22 FEB 2005 RMG
+# update nirs5, 20 Mar 2005 MCH
+# update nirs5, 16 May 2005 PP
+# update nirs5, 26 May 2005 PP
+# added  gcal2bhros3, 25 jul 2005 RR
+# added  bhros3, 27 jul 2005 PG
+# update nirs5, 22 Sep 2005 AOB
+# updated gmos3 and nirs5 SF positions as per BM and BR after MCH remeasured the CR axis (done by RMG on 08 Nov 2005)
+# changed nirs to gnirs (PG 07/Dec/05)
+# changed pho to phoenix (PG 07/Dec/05)
+# updated gmos3 SF position with values found by RC in ENT96 SDA 
+# updated gnirs5 SF position, 24 Nov 2006 MCH
+# set gmos back to -3083, 902740, -1600 after GMOS eng. / OIWFS patrol field offset; 19 Feb 2007 MCH
+# added gcal2nici, 22 Feb 07 PG
+# updated gcal2nici, 28 feb 2007 RMG
+#updatde gcal2nici1, 12 march Gelys
+# updated phoenix4, 25 jul 2007 PP
+# updated gmos3, 2 Aug 07 MCH
+# updated nici5, 29 jan 08 EJC
+# updated gmos3, 25 Apr 08 CUR
+# updated phoenix, 26 Apr 08 MCH
+# updated nici5, 14 jul 08 EJC
+# updated gmos3, 20 oct 08 EJC
+# updated phoenix4, 22 oct 08 ALO and GT
+# updated nici5, 15 nov 08 MCH
+# updated gcal2nici5, 07 feb 09 EJC
+# updated gmos3 on May18, 2009 by PP
+# updated phoenix4 on May18, 2009 by PP
+# updated f2,nici on Aug14, 2009 by PP.GT,BW
+# updated gmos3, 2009oct09 EJC
+# updated nici5, 2009oct11 EJC
+# updated nici5 and gcal2nici5, 2010 April 21 CUR
+# updated gmos, 2010 May 06 AWS, as per CR-10 0500
+# updated nici5, 2010 May 10, CUR, as per CR-10 0507 
+# updated nici5, 2010 Oct 22, CUR, as per CR-10 0758 
+# updated gmos, 2010 Oct 22, AWS
+# updated by GT 2010 January 12
+# updated ao2gsaoi5 Jan 21, AWS
+# added   gsaoi5, 2011 May 24, CUR. 
+# updated nici5, gcal2nici5 by AWS, 2011 August 23 
+# updated gmos3 by EJC 2011 Aug 24
+# updated gmos3 by ALO 2011 Aug 29
+# updated gcal2nici5 by AWS 2011 Sep 22
+# updated gca2f25 by pp 2011nov28
+# updated gca2f25 by pp 2011nov28
+# updated f25 by pg 2011dec02
+# updated f25 by EJC 2011dec06
+# updated ao2ac by A. Lopez 2011dec12 
+# updated nici5 EJC 2013feb17
+# updated ao2gsaoi1 AWS 2012 Mar 30
+# updated gmos3 EM 2012Aug14
+# updated ao2gsaoi1 CUR 2012 Nov 03
+# updated ao2gsaio1 AWS 2012 Nov 07
+# updated gcal2gsaoi1 RC 2012 Dec 20
+# 2013 Apr 04: added new positions according to REL-788 "Add support for visitor instrument" (C. Urrutia) 
+# updated f25 PG 2013 Apr 25
+# updated gcal2f25 PG 2013 Apr 26
+# updated ao2gsaio1 RRO 2013 May 14 CR-13 1627
+# updated gmos3 AC for GG August 24 2013
+# updated f25 AC for PG August 24 2013
+# updated ao2gsaoi1 EM 2013 Aug 30 
+# updated gcal2gsaoi1 RC 2013 Sep 05
+# updated gcal2f25 RR 2013 Sep 23 CR-13 1759
+# updated gmos3 GG 26 oct 2013
+# Added gcal2gpi1 CUR 04 Nov 2013 CR-13 1818
+# updated gcal2gpi1 AC 04 Nov 2013
+# updated ao2gsaoi1 EM 13 Dec 2013
+# Added gpi5 and gcal2gpi5 RRO 01 Apr 2014 CR-14 1975
+# updated ao2gsaoi1 RC 02 Apr 2014
+# updated f25 RR 2014 May 15 CR-14 2061
+# updated ao2gsaoi1 RC 16 May 2014
+# updated gmos3 GG 19 Jun 2014
+# updated f25 EM 08 Jul 2014
+# update goms3 EM 20 Aug 2014
+# update ao2gsaoi1 RC 22 Aug 2014
+# update f25 PP 25 Aug 2014
+# update ao2gsaoi1 RC 24 Oct 2014
+# update ao2gsaoi1 RC 25 Nov 2014
+# update gmos3 GG 19 Dec 2014
+# update ao2gsaoi1 JM 23 Dec 2014
+# updated gsaoi and gmos RRO 2014 Dec 29 CR-14 2214 and CR-14 2210.
+# update ao2gsaoi1 PGX (CR-16 2467)
+# update ao2gsaoi1 RC (tilt only) - 2016-04-08UT
+# added phoenix5 and gcal2phoenix5 PGX 09 May 2016 (CR-16 2523)
+# update phoenix5 - GG 14 may 2016 (CR-16 2529)
+# update ao2gsaoi1 - RA 07 Jun 2016 (CR-16 NNNN)
+# updated f25 - PP 9 Jun 2016 (CR-16 2543)
+# updated visitor5 - AL 15 Jun 2016 (CR-16 NNNN)
+# updated GMOS3 PP 29 Aug 2016
+# updated gmos3 GG 31 Aug 2016
+# updated gmos3 GG 07 Oct 2016
+# updated gmos3 GG 11 Oct 2016
+# updated ao2gsaoi1 RC 26 Oct 2016
+# updated phoenix5 05dec2016 pprado-ggimeno
+# removed nici entries from the lookup table - PGX (FR 37475)
+# updated ao2gsaoi1 RA 2017 Jan 04
+# updated ao2gsaoi1 RC 2017 Mar 03 - RT2 and Tilt only.
+# updated ao2gsaoi1 RC 2017 Apr 27 - RT2 and Tilt only.
+# updated gmos3 GG 2017 jun 19
+# updated gmos3 Tilt value GG 2107jun30
+# updated gmos3 GG 2017jul10
+# updated gmos3 GG 2017oct13
+# updated ao2gsaoi1 2017oct21
+# updated phoenix5 PP 2017 nov 30
+# updated ao2gsaoi1 RC 2017 nov 30 (RT2 and Tilt only)
+# updated f25 PP-GD 2017dec27
+# updated ao2gsaoi1 RC 2018 feb 20 (RT2 and Tilt only)
+# updated f25 PP-GD 2018apr13
+# updated ao2gsaoi1 EM/GL 2018Jul25
+# updated gmos3 and F25 EM 2018Sep02
+# updated ao2gsaoi1 RC 2018Oct09
+# updated gcal2ghost5 PP 2018Nov28
+# updated ghost5 MG 2018Nov29
+# updated ao2gsaoi1 RC 2019jan08
+# updated ao2gsaoi1 RC 2019mar12
+# updated f25 AL 2019mar29
+# updated ao2gsaoi1 RC 2019apr10 (RT2 only)
+# Added visitor2 position. 2019 May 10.
+# updated visitor2 position 2019 May 17
+# updated gmos3 GG 2019jun20
+# updated gmos3 GG,HK 2019aug28
+# updated f25 GG 2019aug29
+# updated ao2gsaoi RC 2019sep27 (RT2 and Titl only)
+# updated RT2 and Tilt for f25. JF,GD,RD (2019 October 28)
+# updated ao2gsaoi RC 2019dec04 (RT2 and Tilt only)
+# updated visitor5 SF position for IGRINS 1 Feb 2020
+
+# name		nval	steps		lowtol		hightol		steps	lowtol		hightol	steps	lowtol	hightol
+ao2ac      	3       -3713155	-100            100             -895700	-100            100     -20145   -100    100
+gcal2ac		3	 3710277	-100		100		-903900	-100		100	 -3345	-100	100
+gmos3 		3	-10072		-100		100		 894900	-100		100	 -1600	-100	100
+gcal2gmos3      3        1852055        -100            100             -7900   -100            100      -4845   -100    100
+#phoenix4       	3       -3696092	-100            100              900100	-100            100      -3347   -100    100
+#gcal2phoenix4   3        10280          -100            100              896000 -100            100     -203345 -100    100
+#nici5		3	 7399588        -100		100	 	 893700	-100		100	 -3345	-100	100
+#gcal2nici5	3	 5547943	-100		100		-6090	-100		100	 -3380	-100	100
+#gcal2nici1	3        3689722        -100            100             -895900 -100            100      -3380   -100    100
+f25             3        7385981	-100            100              889979 -100            100      -7343   -100    100
+gcal2f25        3        5547945        -100            100              -9906  -100            100      -3311   -100    100
+gcal2f21	3        3609718        -100            100             -890900 -100            100      -3380   -100    100
+ao2gsaoi5 	3	-5548766	-100            100             -4300	-100            100      -12345   -100    100
+gcal2gsaoi5 	3        5560277	-100		100		 5100	-100		100	 -3645	-100	100
+gsaoi5		3	 7393011        -100		100	 	 904100	-100		100	 -3345	-100	100
+ao2gsaoi1       3       -3700575        -100            100             -900440 -100            100      -7496  -100    100
+gcal2gsaoi1   	3        3642321        -100            100             -907380 -100            100    	 -7944   -100    100
+ao2gmos3 	3	-1860276 	-100            100             -3900	-100            100      -2946   -100    100
+gcal2visitor1	3        3689722        -100            100             -895900 -100            100      -3380   -100    100
+phoenix5	3	 7400616	-100		100	 	 890800	-100		100	 -3345	-100	100
+#gcal2phoenix5 	3	 5547943	-100		100		-6090	-100		100	 -3380	-100	100
+gpi5		3	 7399588        -100		100	 	 893700	-100		100	 -3345	-100	100
+gcal2visitor5	3        5547943        -100            100             -6090   -100            100      -3380   -100    100
+gcal2gpi5	3	 5547943	-100		100		-6090	-100		100	 -3380	-100	100
+gcal2gpi1	3        3681500        -100            100             -905900 -100            100      -3380   -100    100
+visitor3	3	 2219		-100		100		 895400	-100		100	 -6345	-100	100
+gcal2visitor3   3        1852055        -100            100             -7900   -100            100      -4845   -100    100
+visitor5        3        7385981        -100            100              889979 -100            100      -7343   -100    100
+visitor4       	3       -3696092	-100            100              900100	-100            100      -3347   -100    100
+gcal2visitor4   3        10280          -100            100              896000 -100            100     -203345 -100    100
+ghost5		3	 7391366	-100		100	 	 893980	-100		100	 -7343	-100	100
+gcal2ghost5 	3	 5543833	-100		100		-6900	-100		100	 -3380	-100	100
+gcal2ghost1	3        3689722        -100            100             -895900 -100            100      -3380   -100    100
+#dummy27		3        3609719        -100            100             -890900 -100            100      -3380   -100    100
+#dummy28		3        3609720        -100            100             -890900 -100            100      -3380   -100    100
+#dummy31		3        3609748        -100            100             -890900 -100            100      -3380   -100    100
+#dummy32		3        3609758        -100            100             -890900 -100            100      -3380   -100    100
+visitor2	3	 3710277        -100		100	 	 896100	-100		100	 -4500	-100	100
+Dismount	3	 0		-100		100		 40091	-100		100	-21345	-100	100
+park-pos	3	 0		-999999999 	999999999	 -2500	-2500 	5000 -352985	-200 200
+_		3        3609718        -100            100             -890900 -100            100      -3380   -100    100
+undefined	3	 0		-999999999 	999999999	 0	-999999999 	999999999 0	-999999999 999999999
+
+# parked means: RT anywhere, Tilt perp. +-5 deg., Lin near Dismount +-50mm
