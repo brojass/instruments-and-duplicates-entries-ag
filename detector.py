@@ -61,7 +61,7 @@ def create_dict_for_search_duplicates(instruments_list):
 
 def search_instruments(instruments_list, instruments_ports_list):
     """
-    Function that search and check that each instrument and port associated to it, exist on the lookup table inside
+    Function that search and check that each instrument and port associated to it, if exist on the lookup table inside
     agSeqPorts.pv
     :param instruments_list: A list with lines found inside agSeqPorts.pv.
     :type instruments_list: list
@@ -241,7 +241,7 @@ def format_to_send(instruments_problems, duplicates_problems, canopus_problems):
             content = head_instruments + "\n" + head_duplicates
 
         print_format(content)
-        # send_email(content)
+        send_email(content)
 
     elif instruments_problems and not duplicates_problems:
         head_instruments = 'Instruments not found:' + "\n" + instruments_problems
@@ -253,7 +253,7 @@ def format_to_send(instruments_problems, duplicates_problems, canopus_problems):
             content = head_instruments
 
         print_format(content)
-        # send_email(content)
+        send_email(content)
 
     elif not instruments_problems and duplicates_problems:
         head_duplicates = 'Duplicates issues:' + "\n" + duplicates_problems
@@ -265,12 +265,12 @@ def format_to_send(instruments_problems, duplicates_problems, canopus_problems):
             content = head_duplicates
 
         print_format(content)
-        # send_email(content)
+        send_email(content)
 
     elif canopus_problems:
         head_canopus = 'Warning in port 4:' + "\n" + canopus_problems + "\n"
         print_format(head_canopus)
-        # send_email(head_canopus)
+        send_email(head_canopus)
 
     else:
         print('Issues not detected')
@@ -278,7 +278,7 @@ def format_to_send(instruments_problems, duplicates_problems, canopus_problems):
 
 def print_format(content):
     """
-    Function that print at the output the following format
+    Function that print at output the following format
     :param content: The content of the message
     :type content: str
     """
@@ -350,9 +350,14 @@ if __name__ == '__main__':
     # print_list(port_list)
     # print_list(instrument_list)
 
+    # Merge between each port and the name of the instrument associated.
+    # If CANOPUS aren't in port 4 return an error string
     instrument_port_list, error_canopus = rescue_port_and_instrument_name(port_list)
+
+    # Check each instrument and port associated to it if exist on the lookup table
     instruments_finded = search_instruments(instrument_list, instrument_port_list)
 
+    # Separate the three steps values of each instrument on the lookup table
     try:
         tables_dict = create_dict_for_search_duplicates(instrument_list)
     except IndexError as e:
@@ -360,8 +365,12 @@ if __name__ == '__main__':
         print('Please check that lines on lookup tables are in the following format:')
         print('name,nval,steps,lowtol,hightol,steps,lowtol,hightol,steps,lowtol,hightol')
         exit(0)
+
+    # Search on tables_dict duplicate values
     duplicate_entries = search_duplicates(tables_dict)
 
+    # Structure the message to send as string
     instruments_message, duplicates_message = configure_email(instruments_finded, duplicate_entries)
 
+    # Choose which format message will be send
     format_to_send(instruments_message, duplicates_message, error_canopus)
