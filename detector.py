@@ -16,10 +16,10 @@ class ConfigurationError(Exception):
 
 def search_duplicates(dict_tables):
     """
-
-    :param dict_tables:
+    Function that compare and search on dict_tables duplicate values and return on a new dict the duplicate values.
+    :param dict_tables: Dictionary with the three steps values of each instrument on the lookup table.
     :type dict_tables: dict
-    :return:
+    :return: Entries that has duplicate values on the lookup table
     :rtype: dict
     """
     duplicate_dict = {}
@@ -35,10 +35,11 @@ def search_duplicates(dict_tables):
 
 def create_dict_for_search_duplicates(instruments_list):
     """
-
-    :param instruments_list:
+    This function create an additional dictionary who has the three steps values of each instrument on the lookup table
+    for compare later.
+    :param instruments_list: A list with lines found inside agSeqPorts.pv.
     :type instruments_list: list
-    :return:
+    :return: Dictionary with the three steps values of each instrument on the lookup table.
     :rtype: dict
     """
     instrument_dict = {}
@@ -58,14 +59,15 @@ def create_dict_for_search_duplicates(instruments_list):
     return instrument_dict
 
 
-def search_instrument(instruments_list, instruments_ports_list):
+def search_instruments(instruments_list, instruments_ports_list):
     """
-
-    :param instruments_list:
+    Function that search and check that each instrument and port associated to it, exist on the lookup table inside
+    agSeqPorts.pv
+    :param instruments_list: A list with lines found inside agSeqPorts.pv.
     :type instruments_list: list
-    :param instruments_ports_list:
+    :param instruments_ports_list: The name of each instrument and the port where is it.
     :type instruments_ports_list: list
-    :return:
+    :return: Instruments that could not be found on the lookup table
     :rtype: dict
     """
     finded_dict = {}
@@ -86,11 +88,10 @@ def search_instrument(instruments_list, instruments_ports_list):
         else:
             finded_dict[key] = value
 
-    # print(finded_dict)
     return finded_dict
 
 
-def instrument_to_search(ports_list):
+def rescue_port_and_instrument_name(ports_list):
     """
     Function that separate the number of each port and merge the name of the instrument with it. Also return an
     string in case that CANOPUS aren't in port 4.
@@ -119,10 +120,10 @@ def instrument_to_search(ports_list):
 def read_configuration(file_name):
     """
     This function read the file that have the actual instruments that are already functioning on differents ports and
-    read the file who has the lock up tables.
+    read the file who has the lookup tables.
     :param file_name: The name of the path file who has the configuration.
     :type file_name: str
-    :return: A list with files found inside the configuration file.
+    :return: A list with lines found inside the configuration file.
     :rtype: list
     :raises: ConfigurationError
     """
@@ -147,6 +148,10 @@ def read_configuration(file_name):
                 found_file_list.append(line)
 
     f.close()
+
+    if not found_file_list:
+        raise ConfigurationError('ports and instruments lines missing')
+
     return found_file_list
 
 
@@ -179,116 +184,116 @@ def get_arguments(argv):
     return parser.parse_args(argv[1:])
 
 
-def configure_email(instrument, duplicates, canopus_error):
+def configure_email(instrument, duplicates):
     """
-
-    :param canopus_error:
-    :type canopus_error: str
-    :param instrument:
+    This function iterates over the dictionaries for structure the message to send on each value found
+    on the dictionaries
+    :param instrument: Instruments that could not be found on the lookup table
     :type instrument: dict
-    :param duplicates:
+    :param duplicates: Entries that has duplicate values on the lookup table
     :type duplicates: dict
+    :return: Two strings that contain information about the issues. One, in case instruments could not be found
+    on the lookup table. And other, in case there exist duplicate values.
+    :rtype: tuple
     """
     duplicates_problems = ''
     instruments_problems = ''
-    canopus_problems = canopus_error
-    state = 0
 
     for key, value in instrument.items():
-        emptykey = ''
-        emptyvalue = ''
+        empty_key = ''
+        empty_value = ''
         if re.search('emptyKey_', key) or not value:
             if re.search('emptyKey_', key):
-                emptykey_split = key.split('_')
-                emptykey = emptykey_split[-1] + ' could not be found on the table' + '\n'
+                empty_key_split = key.split('_')
+                empty_key = empty_key_split[-1] + ' could not be found on the table' + '\n'
                 if not value:
-                    emptyvalue = 'gcal2' + emptykey_split[-1] + ' could not be found on the table'
+                    empty_value = 'gcal2' + empty_key_split[-1] + ' could not be found on the table' + '\n'
             elif not value:
-                emptyvalue = 'gcal2' + key + ' could not be found on the table'
-            instruments_problems = instruments_problems + emptykey + emptyvalue
-
-    # print(instruments_problems)
+                empty_value = 'gcal2' + key + ' could not be found on the table' + '\n'
+            instruments_problems = instruments_problems + empty_key + empty_value
 
     for key, value in duplicates.items():
         if len(value) > 1:
             duplicates_problems = duplicates_problems + 'Entries ' + str(value) + ' has duplicate values: ' + str(
                 key) + '\n'
-    # print(duplicates_problems)
 
-    duplicates_problems = ''
+    return instruments_problems, duplicates_problems
 
+
+def format_to_send(instruments_problems, duplicates_problems, canopus_problems):
+    """
+    This function choose which format message will be send
+    :param instruments_problems: The message of instruments that could not be found on the lookup table.
+    :type instruments_problems: str
+    :param duplicates_problems: The message of duplicates values on the lookup table.
+    :type duplicates_problems: str
+    :param canopus_problems: String in case that CANOPUS aren't in port 4
+    :type canopus_problems: str
+    """
     if instruments_problems and duplicates_problems:
-
         head_instruments = 'Instruments not found:' + "\n" + instruments_problems
         head_duplicates = 'Duplicates issues:' + "\n" + duplicates_problems
-        print('---------------------------------------------------------------------------------')
-        print('Issues detected in ag_sf.lut')
-        print('---------------------------------------------------------------------------------')
+
         if canopus_problems:
             head_canopus = 'Warning in port 4:' + "\n" + canopus_problems + "\n"
-            print(head_canopus)
             content = head_canopus + "\n" + head_instruments + "\n" + head_duplicates
         else:
             content = head_instruments + "\n" + head_duplicates
-        print(head_instruments)
-        print(head_duplicates)
-        print('\n' + '\n' + 'NOTE: Please check each port with the instrument in agSeqPorts.pv')
-        print('---------------------------------------------------------------------------------')
-        state = 1
-        send_email(content)
+
+        print_format(content)
+        # send_email(content)
 
     elif instruments_problems and not duplicates_problems:
-
         head_instruments = 'Instruments not found:' + "\n" + instruments_problems
-        print('---------------------------------------------------------------------------------')
-        print('Issues detected in ag_sf.lut')
-        print('---------------------------------------------------------------------------------')
+
         if canopus_problems:
             head_canopus = 'Warning in port 4:' + "\n" + canopus_problems + "\n"
-            print(head_canopus)
             content = head_canopus + "\n" + head_instruments
         else:
             content = head_instruments
-        print(content)
-        print('\n' + '\n' + 'NOTE: Please check each port with the instrument in agSeqPorts.pv')
-        print('---------------------------------------------------------------------------------')
-        state = 1
-        send_email(content)
+
+        print_format(content)
+        # send_email(content)
 
     elif not instruments_problems and duplicates_problems:
-
         head_duplicates = 'Duplicates issues:' + "\n" + duplicates_problems
-        print('---------------------------------------------------------------------------------')
-        print('Issues detected in ag_sf.lut')
-        print('---------------------------------------------------------------------------------')
+
         if canopus_problems:
             head_canopus = 'Warning in port 4:' + "\n" + canopus_problems + "\n"
-            print(head_canopus)
             content = head_canopus + "\n" + head_duplicates
         else:
             content = head_duplicates
-        print(content)
-        print('\n' + '\n' + 'NOTE: Please check each port with the instrument in agSeqPorts.pv')
-        print('---------------------------------------------------------------------------------')
-        state = 1
-        send_email(head_duplicates)
 
-    # elif canopus_problems and state == 0:
-    #
-    #     print('---------------------------------------------------------------------------------')
-    #     print('Issues detected in ag_sf.lut')
-    #     print('---------------------------------------------------------------------------------')
-    #     head_canopus = 'Warning in port 4:' + "\n" + canopus_problems + "\n"
-    #     print(head_canopus)
-    #     print('\n' + '\n' + 'NOTE: Please check each port with the instrument in agSeqPorts.pv')
-    #     print('---------------------------------------------------------------------------------')
-    #     send_email(head_canopus)
+        print_format(content)
+        # send_email(content)
+
+    elif canopus_problems:
+        head_canopus = 'Warning in port 4:' + "\n" + canopus_problems + "\n"
+        print_format(head_canopus)
+        # send_email(head_canopus)
+
+    else:
+        print('Issues not detected')
+
+
+def print_format(content):
+    """
+    Function that print at the output the following format
+    :param content: The content of the message
+    :type content: str
+    """
+    print('---------------------------------------------------------------------------------')
+    print('Issues detected in ag_sf.lut')
+    print('---------------------------------------------------------------------------------')
+    print(content)
+    print('\n' + '\n' + 'NOTE: Please check each port with the instrument in agSeqPorts.pv')
+    print('---------------------------------------------------------------------------------')
 
 
 def send_email(content):
     """
-
-    :param content:
+    Function that send the email of the issues that were detected to a specifics persons.
+    :param content: The content of the message
     :type content: str
     """
     for email in EMAILS_TO_SEND:
@@ -325,6 +330,9 @@ if __name__ == '__main__':
     tables_dict = {}
     duplicate_entries = []
 
+    instruments_message = ''
+    duplicates_message = ''
+
     # Read configuration file(s)
     try:
         port_list = read_configuration('agSeqPorts.pv')
@@ -335,14 +343,25 @@ if __name__ == '__main__':
     except ConfigurationError as e:
         print(e)
         exit(0)
+    except IndexError as e:
+        print(e)
+        exit(0)
 
     # print_list(port_list)
     # print_list(instrument_list)
 
-    instrument_port_list, error_canopus = instrument_to_search(port_list)
-    instruments_finded = search_instrument(instrument_list, instrument_port_list)
+    instrument_port_list, error_canopus = rescue_port_and_instrument_name(port_list)
+    instruments_finded = search_instruments(instrument_list, instrument_port_list)
 
-    tables_dict = create_dict_for_search_duplicates(instrument_list)
+    try:
+        tables_dict = create_dict_for_search_duplicates(instrument_list)
+    except IndexError as e:
+        print(e)
+        print('Please check that lines on lookup tables are in the following format:')
+        print('name,nval,steps,lowtol,hightol,steps,lowtol,hightol,steps,lowtol,hightol')
+        exit(0)
     duplicate_entries = search_duplicates(tables_dict)
 
-    configure_email(instruments_finded, duplicate_entries, error_canopus)
+    instruments_message, duplicates_message = configure_email(instruments_finded, duplicate_entries)
+
+    format_to_send(instruments_message, duplicates_message, error_canopus)
